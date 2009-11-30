@@ -1,0 +1,17 @@
+#summary The Game of Life
+
+= Introduction =
+
+ The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is the best-known example of a cellular automaton.
+
+ The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input from humans. One interacts with the Game of Life by creating an initial configuration and observing how it evolves.
+
+  --Wikipedia
+
+= Details =
+
+In our implementation of the game of life, we use two different kinds of cells, Conway and Fredkin.  The Conway cell follows the game of life according to the original rules of the game as stated by Conway, and the Fredkin Cell follows slightly altered rules as stated by Fredkin.
+
+The most important aspect of our implementation is the support for a combined game of life board with support for both Fredkin and Conway cells simultaneously.
+
+This is accomplished through a number of important implementation details.  The first is the templated Life class, which differentiates Conway, Fredkin, and combined via the template parameter.  The combined game operates thanks to abstraction given by a handler class called Cell.  A Cell object contains an AbstractCell pointer (the abstract base class from which Fredkin and Conway are derived).  Cell provides an API identical to Fredkin and Conway individually, which allows Cell to be used without knowing which kind of cell is actually being interfaced with underneath.
