@@ -15,3 +15,5 @@ In our implementation of the game of life, we use two different kinds of cells, 
 The most important aspect of our implementation is the support for a combined game of life board with support for both Fredkin and Conway cells simultaneously.
 
 This is accomplished through a number of important implementation details.  The first is the templated Life class, which differentiates Conway, Fredkin, and combined via the template parameter.  The combined game operates thanks to abstraction given by a handler class called Cell.  A Cell object contains an AbstractCell pointer (the abstract base class from which Fredkin and Conway are derived).  Cell provides an API identical to Fredkin and Conway individually, which allows Cell to be used without knowing which kind of cell is actually being interfaced with underneath.
+
+Additionally, in the combined game, a Fredkin cell has the ability to mutate into a Conway cell given certain conditions are met.  This is accomplished with a mutate method that seamlessly deletes and replaces the Fredkin cell with a Conway cell, not effecting any other operations of the game.
